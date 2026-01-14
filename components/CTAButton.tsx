@@ -15,6 +15,7 @@ export default function CTAButton({
 }) {
   const base =
     "inline-flex items-center justify-center rounded-2xl px-4 py-2 text-sm font-medium transition";
+
   const styles: Record<Variant, string> = {
     primary:
       "text-white bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-500 hover:opacity-90 shadow-sm",
@@ -26,7 +27,12 @@ export default function CTAButton({
 
   if (external) {
     return (
-      <a className={`${base} ${styles[variant]}`} href={href} target="_blank" rel="noreferrer">
+      <a
+        className={`${base} ${styles[variant]}`}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+      >
         {children}
       </a>
     );
