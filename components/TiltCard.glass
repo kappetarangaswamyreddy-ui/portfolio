@@ -1,0 +1,53 @@
+import CTAButton from "./CTAButton";
+import TiltCard from "./TiltCard";
+
+export default function ProjectCard({
+  title,
+  tags,
+  impact,
+  links
+}: {
+  title: string;
+  tags: string[];
+  impact: string[];
+  links: { github?: string; demo?: string };
+}) {
+  return (
+    <TiltCard className="h-full">
+      <div className="glass rounded-2xl p-6 shadow-sm hover:shadow-lg">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-lg font-semibold">{title}</h3>
+          <span className="rounded-full bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-emerald-500/20 px-3 py-1 text-xs">
+            Featured
+          </span>
+        </div>
+
+        <div className="mt-3 flex flex-wrap gap-2">
+          {tags.map((t) => (
+            <span
+              key={t}
+              className="rounded-full bg-slate-900/5 px-3 py-1 text-xs text-slate-800 dark:bg-white/10 dark:text-slate-100"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-700 dark:text-slate-200">
+          {impact.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
+
+        <div className="mt-5 flex gap-2">
+          <CTAButton href={links.github ?? "#"} variant="secondary" external>
+            GitHub
+          </CTAButton>
+          <CTAButton href={links.demo ?? "#"} variant="ghost" external>
+            Demo
+          </CTAButton>
+        </div>
+      </div>
+    </TiltCard>
+  );
+}
